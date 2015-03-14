@@ -33,9 +33,6 @@ public class MyTrie {
 			levelCounter.oneMore();
 			levelCounter.oneMore();
 			final String suffix = suffixes.get(value.charAt(0));
-			if(null == suffix){
-				return false;
-			}
 			return suffix.equals(value);
 		}
 		for (String current : values) {
