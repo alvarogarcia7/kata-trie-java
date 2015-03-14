@@ -33,10 +33,7 @@ public class MyTrie {
 	public boolean contains (final String value) {
 		levelCounter.oneMore(); // check prefix
 		Word word = Word.from(value);
-		if(words_contain(word)){
-			return true;
-		}
-		return false;
+		return words_contain(word);
 	}
 
 	//TODO AGB this method has this name because I'm forecasting I'm going to extract a repository for Word
