@@ -29,10 +29,10 @@ public class Words {
 	}
 
 	public boolean contain (final Word word) {
-		return matchingPrefixFor(word) && checkSuffixIfPresentFor(word);
+		return matchingPrefixFor(word) && checkSuffixFor(word);
 	}
 
-	private boolean checkSuffixIfPresentFor (final Word word) {
+	private boolean checkSuffixFor (final Word word) {
 		levelCounter.oneMore();
 		final List<Optional<String>> suffixes = this.suffixes.get(word.prefix());
 		return null != suffixes && suffixes.contains(word.suffix());
