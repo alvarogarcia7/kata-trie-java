@@ -38,15 +38,10 @@ public class MyTrie {
 		}
 	}
 
-	private boolean hasPrefixAlreadyPresent (final String value) {
-		Word word = splitIntoPrefixSuffix(value);
-		return word.suffix.isPresent() && this.prefixes.contains(word.prefix);
-	}
-
 	public boolean contains (final String value) {
-
 		levelCounter.oneMore(); // check prefix
-		if (hasPrefixAlreadyPresent(value)) {
+		Word word = splitIntoPrefixSuffix(value);
+		if (word.suffix.isPresent() && this.prefixes.contains(word.prefix)) {
 			levelCounter.oneMore(); // check  suffix
 			final List<Optional<String>> suffix = suffixes.get(value.charAt(0));
 			for (Optional<String> current : suffix) {
