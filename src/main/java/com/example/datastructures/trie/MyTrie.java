@@ -36,7 +36,6 @@ public class MyTrie {
 	}
 
 	private boolean hasPrefixAlreadyPresent (final String value) {
-		//return value.length() > 1 && this.prefixes.contains(String.valueOf(value.charAt(0)));
 		PrefixSuffix prefixSuffix = splitIntoPrefixSuffix(value);
 		if(prefixSuffix.suffix.isPresent() && this.prefixes.contains(prefixSuffix.prefix)){
 			return true;
