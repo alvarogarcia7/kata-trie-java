@@ -36,15 +36,10 @@ public class MyTrie {
 		if(words_contain(word)){
 			return true;
 		}
-		for (Character current : prefixes) {
-			if (current.equals(word.prefix)) {
-				return true;
-			}
-		}
 		return false;
 	}
 
-		//TODO AGB this method has this name because I'm forecasting I'm going to extract a repository for Word
+	//TODO AGB this method has this name because I'm forecasting I'm going to extract a repository for Word
 	private boolean words_contain (final Word word) {
 		if (word.suffix.isPresent() && this.prefixes.contains(word.prefix)) {
 			levelCounter.oneMore(); // check  suffix
@@ -56,6 +51,11 @@ public class MyTrie {
 			}
 
 			return false;
+		}
+		for (Character current : prefixes) {
+			if (current.equals(word.prefix)) {
+				return true;
+			}
 		}
 		return false;
 	}
