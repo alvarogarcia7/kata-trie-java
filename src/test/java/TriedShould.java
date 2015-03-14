@@ -25,6 +25,8 @@ public class TriedShould {
 	@Test
 	public void add_non_a_existing_word () {
 
-		assertThat(myTrie.add("a").isEmpty(), is(false));
+		myTrie = myTrie.add("a");
+
+		assertThat(myTrie.isEmpty(), is(false));
 	}
 }
