@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class MyTrie {
 	private boolean empty = true;
-	private List<String> values = new ArrayList<String>();
+	private List<String> values = new ArrayList<>();
 
 	public boolean isEmpty () {
 		return empty;
