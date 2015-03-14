@@ -42,6 +42,9 @@ class Word {
 		return prefix;
 	}
 
+	/**
+	 * This value is present if it is an intermediate word, not present if end of word
+	 */
 	public Optional<String> suffix () {
 		return suffix;
 	}
