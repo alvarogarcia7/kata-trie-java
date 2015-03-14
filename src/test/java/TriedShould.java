@@ -79,4 +79,11 @@ public class TriedShould {
 		assertThat(levelCounter.callNumber(), is(2));
 	}
 
+	@Test
+	public void not_contain_intermediate_words () {
+		myTrie = myTrie.add("ab");
+
+		assertThat(myTrie.contains("a"), is(false));
+	}
+
 }
