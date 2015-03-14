@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.is;
 /**
  * Created by alvaro on 14/03/15.
  */
-public class TriedShould {
+public class TrieShould {
 
 	private MyTrie myTrie;
 
