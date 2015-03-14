@@ -68,8 +68,8 @@ public class MyTrie {
 			this(prefix, Optional.of(suffix));
 		}
 
-		public PrefixSuffix (final char c) {
-			this(c, Optional.empty());
+		public PrefixSuffix (final char prefix) {
+			this(prefix, Optional.empty());
 		}
 
 		public PrefixSuffix(final char prefix, Optional<String> suffix) {
