@@ -29,7 +29,7 @@ public class Words {
 	}
 
 	public boolean contain (final Word word) {
-		return !noMatchingPrefixFor(word) && checkSuffixIfPresentFor(word);
+		return matchingPrefixFor(word) && checkSuffixIfPresentFor(word);
 	}
 
 	private boolean checkSuffixIfPresentFor (final Word word) {
@@ -38,14 +38,12 @@ public class Words {
 		return null != suffixes && suffixes.contains(word.suffix());
 	}
 
-	private boolean noMatchingPrefixFor (final Word word) {
+	private boolean matchingPrefixFor (final Word word) {
 		levelCounter.oneMore();
-		if(word.suffix().isPresent()){
-			if(!prefixes.contains(word.prefix())){
-				return true;
-			}
+		if(!prefixes.contains(word.prefix())){
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	public void injectLevelCounter (final LevelCounter levelCounter) {
