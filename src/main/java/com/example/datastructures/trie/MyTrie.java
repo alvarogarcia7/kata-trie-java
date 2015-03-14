@@ -9,6 +9,7 @@ import java.util.List;
 public class MyTrie {
 	private boolean empty = true;
 	private List<String> values = new ArrayList<>();
+	private LevelCounter levelCounter = new LevelCounter();
 
 	public boolean isEmpty () {
 		return empty;
@@ -21,6 +22,16 @@ public class MyTrie {
 	}
 
 	public boolean contains (final String value) {
-		return this.values.contains(value);
+		for (String current : values) {
+			levelCounter.oneMore();
+			if(current.equals(value)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void injectLevelCounter (final LevelCounter levelCounter) {
+		this.levelCounter = levelCounter;
 	}
 }

@@ -9,4 +9,8 @@ public class LevelCounter {
 	public int callNumber () {
 		return calls;
 	}
+
+	public void oneMore () {
+		calls++;
+	}
 }
