@@ -40,10 +40,7 @@ public class Words {
 
 	private boolean matchingPrefixFor (final Word word) {
 		levelCounter.oneMore();
-		if(!prefixes.contains(word.prefix())){
-			return false;
-		}
-		return true;
+		return prefixes.contains(word.prefix());
 	}
 
 	public void injectLevelCounter (final LevelCounter levelCounter) {
