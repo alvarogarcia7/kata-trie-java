@@ -44,6 +44,10 @@ public class MyTrie {
 	}
 
 	public boolean contains (final String value) {
+		for (String prefix : prefixes) {
+			assert(prefix.length() == 1);
+		}
+
 		levelCounter.oneMore(); // check prefix
 		if (hasSuffixAlreadyPresent(value)) {
 			levelCounter.oneMore(); // check  suffix
