@@ -14,4 +14,8 @@ public class MyTrie {
 		empty = false;
 		return this;
 	}
+
+	public boolean contains (final String value) {
+		return false;
+	}
 }
