@@ -53,7 +53,7 @@ public class MyTrie {
 			return false;
 		}
 		for (Character current : prefixes) {
-			if (current.equals(value.charAt(0))) {
+			if (current.equals(word.prefix)) {
 				return true;
 			}
 		}
