@@ -19,7 +19,7 @@ public class MyTrie {
 	}
 
 	public MyTrie add (final String value) {
-		Word word = splitIntoPrefixSuffix(value);
+		Word word = Word.from(value);
 		if(!prefixes.contains(word.prefix)){
 			prefixes.add(word.prefix);
 		}
@@ -30,13 +30,9 @@ public class MyTrie {
 		return this;
 	}
 
-	private Word splitIntoPrefixSuffix (final String value) {
-		return Word.from(value);
-	}
-
 	public boolean contains (final String value) {
 		levelCounter.oneMore(); // check prefix
-		Word word = splitIntoPrefixSuffix(value);
+		Word word = Word.from(value);
 		if (word.suffix.isPresent() && this.prefixes.contains(word.prefix)) {
 			levelCounter.oneMore(); // check  suffix
 			final List<Optional<String>> suffix = suffixes.get(word.prefix);
