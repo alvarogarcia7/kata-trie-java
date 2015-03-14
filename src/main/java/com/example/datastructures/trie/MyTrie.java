@@ -44,6 +44,7 @@ public class MyTrie {
 		return false;
 	}
 
+		//TODO AGB this method has this name because I'm forecasting I'm going to extract a repository for Word
 	private boolean words_contain (final Word word) {
 		if (word.suffix.isPresent() && this.prefixes.contains(word.prefix)) {
 			levelCounter.oneMore(); // check  suffix
