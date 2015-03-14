@@ -74,7 +74,7 @@ public class TriedShould {
 		myTrie = myTrie.add("d");
 		myTrie = myTrie.add("ab");
 
-		myTrie.contains("ab");
+		assertThat(myTrie.contains("ab"), is(true));
 
 		assertThat(levelCounter.callNumber(), is(2));
 	}
