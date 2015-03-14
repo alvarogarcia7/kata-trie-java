@@ -9,17 +9,15 @@ import java.util.Map;
  * Created by alvaro on 14/03/15.
  */
 public class MyTrie {
-	private boolean empty = true;
 	private List<String> chars = new ArrayList<>();
 	private LevelCounter levelCounter = new LevelCounter();
 	private Map<Character, String> suffixes = new HashMap<>();
 
 	public boolean isEmpty () {
-		return empty;
+		return chars.isEmpty();
 	}
 
 	public MyTrie add (final String value) {
-		empty = false;
 		if (hasSuffixAlreadyPresent(value)) {
 			this.suffixes.put(value.charAt(0), value.substring(0));
 		} else {
