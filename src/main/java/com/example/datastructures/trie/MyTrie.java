@@ -19,11 +19,6 @@ public class MyTrie {
 
 	public boolean contains (final String value) {
 		Word word = Word.from(value);
-		return words_contain(word);
-	}
-
-	//TODO AGB this method has this name because I'm forecasting I'm going to extract a repository for Word
-	private boolean words_contain (final Word word) {
 		return words.contain(word);
 	}
 
