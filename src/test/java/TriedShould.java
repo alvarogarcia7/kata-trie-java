@@ -13,4 +13,10 @@ public class TriedShould {
 	public void be_empty_by_default () {
 		assertThat(new MyTrie().isEmpty(), is(true));
 	}
+
+	@Test
+	public void add_non_a_existing_word () {
+
+		assertThat(new MyTrie().add("a").isEmpty(), is(false));
+	}
 }
