@@ -34,8 +34,8 @@ public class MyTrie {
 
 	public boolean contains (final String value) {
 		if (hasSuffixAlreadyPresent(value)) {
-			levelCounter.oneMore();
-			levelCounter.oneMore();
+			levelCounter.oneMore(); // check prefix
+			levelCounter.oneMore(); // check  suffix
 			final String suffix = suffixes.get(value.charAt(0));
 			return suffix.equals(value);
 		}
