@@ -45,7 +45,7 @@ public class MyTrie {
 			levelCounter.oneMore(); // check  suffix
 			final List<Optional<String>> suffix = suffixes.get(word.prefix);
 			for (Optional<String> current : suffix) {
-				if (current.isPresent() && current.get().equals(value.substring(1))) {
+				if (current.isPresent() && current.get().equals(word.suffix.get())) {
 					return true;
 				}
 			}
