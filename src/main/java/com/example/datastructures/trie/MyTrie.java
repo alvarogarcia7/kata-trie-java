@@ -33,6 +33,18 @@ public class MyTrie {
 	public boolean contains (final String value) {
 		levelCounter.oneMore(); // check prefix
 		Word word = Word.from(value);
+		if(words_contain(word)){
+			return true;
+		}
+		for (Character current : prefixes) {
+			if (current.equals(word.prefix)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean words_contain (final Word word) {
 		if (word.suffix.isPresent() && this.prefixes.contains(word.prefix)) {
 			levelCounter.oneMore(); // check  suffix
 			final List<Optional<String>> suffix = suffixes.get(word.prefix);
@@ -43,11 +55,6 @@ public class MyTrie {
 			}
 
 			return false;
-		}
-		for (Character current : prefixes) {
-			if (current.equals(word.prefix)) {
-				return true;
-			}
 		}
 		return false;
 	}
