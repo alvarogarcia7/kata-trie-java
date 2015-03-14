@@ -19,7 +19,7 @@ public class MyTrie {
 	}
 
 	public MyTrie add (final String value) {
-		if (hasSuffixAlreadyPresent(value)) {
+		if (hasPrefixAlreadyPresent(value)) {
 			this.suffixes.put(value.charAt(0), value.substring(0));
 		} else {
 			this.prefixes.add(value.charAt(0));
@@ -35,7 +35,7 @@ public class MyTrie {
 		}
 	}
 
-	private boolean hasSuffixAlreadyPresent (final String value) {
+	private boolean hasPrefixAlreadyPresent (final String value) {
 		//return value.length() > 1 && this.prefixes.contains(String.valueOf(value.charAt(0)));
 		PrefixSuffix prefixSuffix = splitIntoPrefixSuffix(value);
 		if(prefixSuffix.suffix.isPresent() && this.prefixes.contains(prefixSuffix.prefix)){
@@ -46,7 +46,7 @@ public class MyTrie {
 	public boolean contains (final String value) {
 
 		levelCounter.oneMore(); // check prefix
-		if (hasSuffixAlreadyPresent(value)) {
+		if (hasPrefixAlreadyPresent(value)) {
 			levelCounter.oneMore(); // check  suffix
 			final String suffix = suffixes.get(value.charAt(0));
 			return suffix.equals(value);
