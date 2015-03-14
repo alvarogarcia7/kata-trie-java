@@ -12,24 +12,27 @@ import java.util.Optional;
 public class MyTrie {
 	private List<Character> prefixes = new ArrayList<>();
 	private LevelCounter levelCounter = new LevelCounter();
-	private Map<Character, String> suffixes = new HashMap<>();
+	private Map<Character, List<Optional<String>>> suffixes = new HashMap<>();
 
 	public boolean isEmpty () {
 		return prefixes.isEmpty();
 	}
 
 	public MyTrie add (final String value) {
-		if (hasPrefixAlreadyPresent(value)) {
-			this.suffixes.put(value.charAt(0), value.substring(0));
-		} else {
-			this.prefixes.add(value.charAt(0));
+		PrefixSuffix prefixSuffix = splitIntoPrefixSuffix(value);
+		if(!prefixes.contains(prefixSuffix.prefix)){
+			prefixes.add(prefixSuffix.prefix);
 		}
+		if(!suffixes.containsKey(prefixSuffix.prefix)){
+			suffixes.put(prefixSuffix.prefix,new ArrayList<>());
+		}
+		suffixes.get(prefixSuffix.prefix).add(prefixSuffix.suffix);
 		return this;
 	}
 
 	private PrefixSuffix splitIntoPrefixSuffix (final String value) {
 		if(value.length() > 1){
-			return new PrefixSuffix(value.charAt(0), value.substring(0));
+			return new PrefixSuffix(value.charAt(0), value.substring(1));
 		} else {
 			return new PrefixSuffix(value.charAt(0));
 		}
@@ -45,8 +48,14 @@ public class MyTrie {
 		levelCounter.oneMore(); // check prefix
 		if (hasPrefixAlreadyPresent(value)) {
 			levelCounter.oneMore(); // check  suffix
-			final String suffix = suffixes.get(value.charAt(0));
-			return suffix.equals(value);
+			final List<Optional<String>> suffix = suffixes.get(value.charAt(0));
+			for (Optional<String> current : suffix) {
+				if (current.isPresent() && current.get().equals(value.substring(1))) {
+					return true;
+				}
+			}
+
+			return false;
 		}
 		for (Character current : prefixes) {
 			if (current.equals(value.charAt(0))) {
@@ -75,6 +84,14 @@ public class MyTrie {
 		public PrefixSuffix(final char prefix, Optional<String> suffix) {
 			this.prefix = prefix;
 			this.suffix = suffix;
+		}
+
+		@Override
+		public String toString () {
+			return "{" +
+					"prefix=" + prefix +
+					", suffix=" + suffix +
+					'}';
 		}
 	}
 }
