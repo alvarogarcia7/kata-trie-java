@@ -43,7 +43,7 @@ public class MyTrie {
 		Word word = splitIntoPrefixSuffix(value);
 		if (word.suffix.isPresent() && this.prefixes.contains(word.prefix)) {
 			levelCounter.oneMore(); // check  suffix
-			final List<Optional<String>> suffix = suffixes.get(value.charAt(0));
+			final List<Optional<String>> suffix = suffixes.get(word.prefix);
 			for (Optional<String> current : suffix) {
 				if (current.isPresent() && current.get().equals(value.substring(1))) {
 					return true;
