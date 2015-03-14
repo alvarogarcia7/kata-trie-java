@@ -1,3 +1,4 @@
+import com.example.datastructures.trie.MyTrie;
 import org.junit.Test;
 
 /**
@@ -9,5 +10,6 @@ public class TriedShould {
 	public void be_empty_by_default () {
 
 		org.hamcrest.MatcherAssert.assertThat(new MyTrie().isEmpty(), org.hamcrest.Matchers.is(true));
+
 	}
 }
