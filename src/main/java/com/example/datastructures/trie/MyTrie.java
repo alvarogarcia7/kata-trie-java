@@ -19,28 +19,28 @@ public class MyTrie {
 	}
 
 	public MyTrie add (final String value) {
-		PrefixSuffix prefixSuffix = splitIntoPrefixSuffix(value);
-		if(!prefixes.contains(prefixSuffix.prefix)){
-			prefixes.add(prefixSuffix.prefix);
+		Word word = splitIntoPrefixSuffix(value);
+		if(!prefixes.contains(word.prefix)){
+			prefixes.add(word.prefix);
 		}
-		if(!suffixes.containsKey(prefixSuffix.prefix)){
-			suffixes.put(prefixSuffix.prefix,new ArrayList<>());
+		if(!suffixes.containsKey(word.prefix)){
+			suffixes.put(word.prefix,new ArrayList<>());
 		}
-		suffixes.get(prefixSuffix.prefix).add(prefixSuffix.suffix);
+		suffixes.get(word.prefix).add(word.suffix);
 		return this;
 	}
 
-	private PrefixSuffix splitIntoPrefixSuffix (final String value) {
+	private Word splitIntoPrefixSuffix (final String value) {
 		if(value.length() > 1){
-			return new PrefixSuffix(value.charAt(0), value.substring(1));
+			return new Word(value.charAt(0), value.substring(1));
 		} else {
-			return new PrefixSuffix(value.charAt(0));
+			return new Word(value.charAt(0));
 		}
 	}
 
 	private boolean hasPrefixAlreadyPresent (final String value) {
-		PrefixSuffix prefixSuffix = splitIntoPrefixSuffix(value);
-		return prefixSuffix.suffix.isPresent() && this.prefixes.contains(prefixSuffix.prefix);
+		Word word = splitIntoPrefixSuffix(value);
+		return word.suffix.isPresent() && this.prefixes.contains(word.prefix);
 	}
 
 	public boolean contains (final String value) {
@@ -69,19 +69,19 @@ public class MyTrie {
 		this.levelCounter = levelCounter;
 	}
 
-	private class PrefixSuffix {
+	private class Word {
 		private final Character prefix;
 		private final Optional<String> suffix;
 
-		public PrefixSuffix (final char prefix, final String suffix) {
+		public Word (final char prefix, final String suffix) {
 			this(prefix, Optional.of(suffix));
 		}
 
-		public PrefixSuffix (final char prefix) {
+		public Word (final char prefix) {
 			this(prefix, Optional.empty());
 		}
 
-		public PrefixSuffix(final char prefix, Optional<String> suffix) {
+		public Word (final char prefix, Optional<String> suffix) {
 			this.prefix = prefix;
 			this.suffix = suffix;
 		}
