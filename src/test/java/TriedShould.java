@@ -23,7 +23,7 @@ public class TriedShould {
 	}
 
 	@Test
-	public void add_non_a_existing_word () {
+	public void not_be_empty_after_adding_a_word () {
 
 		myTrie = myTrie.add("a");
 
