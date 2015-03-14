@@ -34,8 +34,13 @@ public class Words {
 
 	private boolean checkSuffixFor (final Word word) {
 		levelCounter.oneMore();
-		final List<Optional<String>> suffixes = this.suffixes.get(word.prefix());
-		return null != suffixes && suffixes.contains(word.suffix());
+		return getExistingSuffixesFor(word).contains(word.suffix());
+	}
+
+	private List<Optional<String>> getExistingSuffixesFor (final Word word) {
+		final ArrayList<Optional<String>> result = new ArrayList<>();
+		result.addAll(this.suffixes.get(word.prefix()));
+		return result;
 	}
 
 	private boolean matchingPrefixFor (final Word word) {
