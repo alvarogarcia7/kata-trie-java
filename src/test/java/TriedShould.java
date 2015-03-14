@@ -41,4 +41,14 @@ public class TriedShould {
 
 		assertThat(myTrie.contains("a"), is(true));
 	}
+
+	@Test
+	public void add_a_word_with_a_common_suffix_to_an_existing_word () {
+		myTrie = myTrie.add("a");
+
+		myTrie.add("ab");
+
+		assertThat(myTrie.contains("a"), is(true));
+		assertThat(myTrie.contains("ab"), is(true));
+	}
 }
