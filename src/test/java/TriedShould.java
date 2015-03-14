@@ -1,3 +1,4 @@
+import com.example.datastructures.trie.LevelCounter;
 import com.example.datastructures.trie.MyTrie;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,4 +52,16 @@ public class TriedShould {
 		assertThat(myTrie.contains("a"), is(true));
 		assertThat(myTrie.contains("ab"), is(true));
 	}
+
+	@Test
+	public void count_how_many_steps_to_find_a_word () {
+		final LevelCounter levelCounter = new LevelCounter();
+		myTrie.injectLevelCounter(levelCounter);
+		myTrie = myTrie.add("a");
+
+		myTrie.contains("a");
+
+		assertThat(levelCounter.callNumber(), is(1));
+	}
+
 }
