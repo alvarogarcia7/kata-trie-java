@@ -34,4 +34,10 @@ public class TriedShould {
 	public void not_contain_non_a_existing_word () {
 		assertThat(myTrie.contains("a"), is(false));
 	}
+
+	@Test
+	public void contain_an_existing_word () {
+		myTrie = myTrie.add("a");
+		assertThat(myTrie.contains("a"), is(true));
+	}
 }
