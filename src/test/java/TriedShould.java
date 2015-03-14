@@ -38,6 +38,7 @@ public class TriedShould {
 	@Test
 	public void contain_an_existing_word () {
 		myTrie = myTrie.add("a");
+
 		assertThat(myTrie.contains("a"), is(true));
 	}
 }
