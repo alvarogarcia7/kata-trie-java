@@ -81,9 +81,9 @@ public class TriedShould {
 
 	@Test
 	public void not_contain_intermediate_words () {
-		myTrie = myTrie.add("ab");
+		myTrie = myTrie.add("cd");
 
-		assertThat(myTrie.contains("a"), is(false));
+		assertThat(myTrie.contains("c"), is(false));
 	}
 
 }

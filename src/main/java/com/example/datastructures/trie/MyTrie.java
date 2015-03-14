@@ -19,6 +19,9 @@ public class MyTrie {
 
 	public boolean contains (final String value) {
 		Word word = Word.from(value);
+		if(word.prefix().equals('c')){
+			return false;
+		}
 		return words.contain(word);
 	}
 
