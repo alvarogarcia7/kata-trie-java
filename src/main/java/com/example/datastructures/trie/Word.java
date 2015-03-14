@@ -10,15 +10,15 @@ class Word {
 	private final Character prefix;
 	private final Optional<String> suffix;
 
-	public Word (final char prefix, final String suffix) {
+	private Word (final char prefix, final String suffix) {
 		this(prefix, Optional.of(suffix));
 	}
 
-	public Word (final char prefix) {
+	private Word (final char prefix) {
 		this(prefix, Optional.empty());
 	}
 
-	public Word (final char prefix, Optional<String> suffix) {
+	private Word (final char prefix, Optional<String> suffix) {
 		this.prefix = prefix;
 		this.suffix = suffix;
 	}
