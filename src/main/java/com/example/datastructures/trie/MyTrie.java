@@ -31,11 +31,7 @@ public class MyTrie {
 	}
 
 	private Word splitIntoPrefixSuffix (final String value) {
-		if(value.length() > 1){
-			return new Word(value.charAt(0), value.substring(1));
-		} else {
-			return new Word(value.charAt(0));
-		}
+		return Word.from(value);
 	}
 
 	public boolean contains (final String value) {
@@ -64,7 +60,7 @@ public class MyTrie {
 		this.levelCounter = levelCounter;
 	}
 
-	private class Word {
+	private static class Word {
 		private final Character prefix;
 		private final Optional<String> suffix;
 
@@ -87,6 +83,14 @@ public class MyTrie {
 					"prefix=" + prefix +
 					", suffix=" + suffix +
 					'}';
+		}
+
+		public static Word from (final String value) {
+			if(value.length() > 1){
+				return new Word(value.charAt(0), value.substring(1));
+			} else {
+				return new Word(value.charAt(0));
+			}
 		}
 	}
 }
