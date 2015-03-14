@@ -31,7 +31,7 @@ public class TriedShould {
 	}
 
 	@Test
-	public void not_contain_non_a_existing_word () {
+	public void not_contain_a_non_existing_word () {
 		assertThat(myTrie.contains("a"), is(false));
 	}
 
