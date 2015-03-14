@@ -20,7 +20,7 @@ public class MyTrie {
 
 	public MyTrie add (final String value) {
 		empty = false;
-		if (value.length() > 1 && this.values.contains(String.valueOf(value.charAt(0)))) {
+		if (hasSuffixAlreadyPresent(value)) {
 			this.suffixes.put(value.charAt(0), value.substring(0));
 		} else {
 			this.values.add(value);
@@ -28,8 +28,12 @@ public class MyTrie {
 		return this;
 	}
 
+	private boolean hasSuffixAlreadyPresent (final String value) {
+		return value.length() > 1 && this.values.contains(String.valueOf(value.charAt(0)));
+	}
+
 	public boolean contains (final String value) {
-		if (value.length() > 1 && values.contains(String.valueOf(value.charAt(0)))) {
+		if (hasSuffixAlreadyPresent(value)) {
 			levelCounter.oneMore();
 			levelCounter.oneMore();
 			final String suffix = suffixes.get(value.charAt(0));
