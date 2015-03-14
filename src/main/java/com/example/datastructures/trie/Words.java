@@ -29,24 +29,21 @@ public class Words {
 	}
 
 	public boolean contain (final Word word) {
-		if (noMatchingPrefixFor(word)){
-			return false;
-		}
-		return checkSuffixIfPresentFor(word);
+		return !noMatchingPrefixFor(word) && checkSuffixIfPresentFor(word);
 	}
 
 	private boolean checkSuffixIfPresentFor (final Word word) {
-		if(!word.suffix().isPresent()){
-			return true;
-		}
 		levelCounter.oneMore();
-		return suffixes.get(word.prefix()).contains(word.suffix());
+		final List<Optional<String>> optionals = suffixes.get(word.prefix());
+		return null != optionals && optionals.contains(word.suffix());
 	}
 
 	private boolean noMatchingPrefixFor (final Word word) {
 		levelCounter.oneMore();
-		if(!prefixes.contains(word.prefix())){
-			return true;
+		if(word.suffix().isPresent()){
+			if(!prefixes.contains(word.prefix())){
+				return true;
+			}
 		}
 		return false;
 	}

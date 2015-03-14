@@ -61,7 +61,7 @@ public class TriedShould {
 
 		myTrie.contains("a");
 
-		assertThat(levelCounter.callNumber(), is(1));
+		assertThat(levelCounter.callNumber(), is(2));
 	}
 
 	@Test
