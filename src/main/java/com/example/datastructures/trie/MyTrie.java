@@ -31,30 +31,21 @@ public class MyTrie {
 	}
 
 	public boolean contains (final String value) {
-		levelCounter.oneMore(); // check prefix
 		Word word = Word.from(value);
 		return words_contain(word);
 	}
 
 	//TODO AGB this method has this name because I'm forecasting I'm going to extract a repository for Word
 	private boolean words_contain (final Word word) {
-		if (word.suffix.isPresent() && this.prefixes.contains(word.prefix)) {
-			levelCounter.oneMore(); // check  suffix
-			final List<Optional<String>> suffix = suffixes.get(word.prefix);
-			for (Optional<String> current : suffix) {
-				if (current.isPresent() && current.get().equals(word.suffix.get())) {
-					return true;
-				}
-			}
-
+		levelCounter.oneMore();
+		if(!prefixes.contains(word.prefix)){
 			return false;
 		}
-		for (Character current : prefixes) {
-			if (current.equals(word.prefix)) {
-				return true;
-			}
+		if(!word.suffix.isPresent()){
+			return true;
 		}
-		return false;
+		levelCounter.oneMore();
+		return suffixes.get(word.prefix).contains(word.suffix);
 	}
 
 	public void injectLevelCounter (final LevelCounter levelCounter) {
