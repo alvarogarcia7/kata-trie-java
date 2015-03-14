@@ -37,15 +37,26 @@ public class MyTrie {
 
 	//TODO AGB this method has this name because I'm forecasting I'm going to extract a repository for Word
 	private boolean words_contain (final Word word) {
-		levelCounter.oneMore();
-		if(!prefixes.contains(word.prefix)){
+		if (noMatchingPrefixFor(word)){
 			return false;
 		}
+		return checkSuffixIfPresentFor(word);
+	}
+
+	private boolean checkSuffixIfPresentFor (final Word word) {
 		if(!word.suffix.isPresent()){
 			return true;
 		}
 		levelCounter.oneMore();
 		return suffixes.get(word.prefix).contains(word.suffix);
+	}
+
+	private boolean noMatchingPrefixFor (final Word word) {
+		levelCounter.oneMore();
+		if(!prefixes.contains(word.prefix)){
+			return true;
+		}
+		return false;
 	}
 
 	public void injectLevelCounter (final LevelCounter levelCounter) {
