@@ -10,6 +10,7 @@ import java.util.Optional;
  * Created by alvaro on 14/03/15.
  */
 public class MyTrie {
+	private Words words = new Words();
 	private List<Character> prefixes = new ArrayList<>();
 	private LevelCounter levelCounter = new LevelCounter();
 	private Map<Character, List<Optional<String>>> suffixes = new HashMap<>();
@@ -20,6 +21,9 @@ public class MyTrie {
 
 	public MyTrie add (final String value) {
 		Word word = Word.from(value);
+		words.add(word);
+
+		// PARALLEL CHANGE
 		if(!prefixes.contains(word.prefix())){
 			prefixes.add(word.prefix());
 		}
@@ -27,6 +31,9 @@ public class MyTrie {
 			suffixes.put(word.prefix(),new ArrayList<>());
 		}
 		suffixes.get(word.prefix()).add(word.suffix());
+		// END PARALLEL CHANGE
+
+
 		return this;
 	}
 
