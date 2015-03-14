@@ -1,19 +1,11 @@
 package com.example.datastructures.trie;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 /**
  * Created by alvaro on 14/03/15.
  */
 public class MyTrie {
-	private List<Character> prefixes = new ArrayList<>();
 	private LevelCounter levelCounter = new LevelCounter();
 	private Words words = new Words(levelCounter);
-	private Map<Character, List<Optional<String>>> suffixes = new HashMap<>();
 
 	public boolean isEmpty () {
 		return words.isEmpty();
