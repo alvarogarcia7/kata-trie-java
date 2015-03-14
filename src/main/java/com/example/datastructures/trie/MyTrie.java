@@ -22,18 +22,6 @@ public class MyTrie {
 	public MyTrie add (final String value) {
 		Word word = Word.from(value);
 		words.add(word);
-
-		// PARALLEL CHANGE
-		if(!prefixes.contains(word.prefix())){
-			prefixes.add(word.prefix());
-		}
-		if(!suffixes.containsKey(word.prefix())){
-			suffixes.put(word.prefix(),new ArrayList<>());
-		}
-		suffixes.get(word.prefix()).add(word.suffix());
-		// END PARALLEL CHANGE
-
-
 		return this;
 	}
 
