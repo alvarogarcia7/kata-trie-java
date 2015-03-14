@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class MyTrie {
 	private boolean empty = true;
-	private List<String> values = new ArrayList<>();
+	private List<String> chars = new ArrayList<>();
 	private LevelCounter levelCounter = new LevelCounter();
 	private Map<Character, String> suffixes = new HashMap<>();
 
@@ -23,24 +23,23 @@ public class MyTrie {
 		if (hasSuffixAlreadyPresent(value)) {
 			this.suffixes.put(value.charAt(0), value.substring(0));
 		} else {
-			this.values.add(value);
+			this.chars.add(value);
 		}
 		return this;
 	}
 
 	private boolean hasSuffixAlreadyPresent (final String value) {
-		return value.length() > 1 && this.values.contains(String.valueOf(value.charAt(0)));
+		return value.length() > 1 && this.chars.contains(String.valueOf(value.charAt(0)));
 	}
 
 	public boolean contains (final String value) {
+		levelCounter.oneMore(); // check prefix
 		if (hasSuffixAlreadyPresent(value)) {
-			levelCounter.oneMore(); // check prefix
 			levelCounter.oneMore(); // check  suffix
 			final String suffix = suffixes.get(value.charAt(0));
 			return suffix.equals(value);
 		}
-		for (String current : values) {
-			levelCounter.oneMore();
+		for (String current : chars) {
 			if (current.equals(value)) {
 				return true;
 			}
