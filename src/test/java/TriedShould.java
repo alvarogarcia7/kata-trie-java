@@ -64,4 +64,19 @@ public class TriedShould {
 		assertThat(levelCounter.callNumber(), is(1));
 	}
 
+	@Test
+	public void traverse_only_nodes_matching_the_prefix () {
+		final LevelCounter levelCounter = new LevelCounter();
+		myTrie.injectLevelCounter(levelCounter);
+		myTrie = myTrie.add("a");
+		myTrie = myTrie.add("b");
+		myTrie = myTrie.add("c");
+		myTrie = myTrie.add("d");
+		myTrie = myTrie.add("ab");
+
+		myTrie.contains("ab");
+
+		assertThat(levelCounter.callNumber(), is(2));
+	}
+
 }
