@@ -54,4 +54,8 @@ public class Words {
 	public void injectLevelCounter (final LevelCounter levelCounter) {
 		this.levelCounter = levelCounter;
 	}
+
+	public boolean isEmpty () {
+		return prefixes.isEmpty();
+	}
 }

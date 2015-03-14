@@ -16,7 +16,7 @@ public class MyTrie {
 	private Map<Character, List<Optional<String>>> suffixes = new HashMap<>();
 
 	public boolean isEmpty () {
-		return prefixes.isEmpty();
+		return words.isEmpty();
 	}
 
 	public MyTrie add (final String value) {
